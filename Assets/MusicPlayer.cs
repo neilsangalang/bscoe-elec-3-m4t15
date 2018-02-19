@@ -10,11 +10,11 @@ public class MusicPlayer : MonoBehaviour {
 	}
 	// Use this for initialization
 	void Start () {
-		Invoke("LoadSceneManager", 2f);
+		Invoke("LoadSceneManager", 10f);
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void LoadSceneManager() {
 		SceneManager.LoadScene(1);
 	}
 }
