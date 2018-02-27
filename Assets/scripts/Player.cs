@@ -19,18 +19,19 @@ public class Player : MonoBehaviour
     [SerializeField] float yMaxRange;
     [SerializeField] float yRotation;
     [SerializeField] float xRotation;
-    //[SerializeField] GameObject explosion;
-    GameObject explosion;
+    [SerializeField] GameObject explosion;
+    //GameObject explosion;
     float xThrow, yThrow;
+    bool explodes = false;
 
 
     // Use this for initialization
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        explosion = GameObject.Find("Explosion");
-        controlSpeed = 5f;
-        tiltSpeed = 10.0f;
+        //explosion = GameObject.Find("Explosion");
+        controlSpeed = 10f;
+        tiltSpeed = 15.0f;
         xMinRange = -4f;
         xMaxRange = 4f;
         yMinRange = -3f;
@@ -138,18 +139,22 @@ public class Player : MonoBehaviour
 
     }
 
-    void OnCollisionEnter(Collision col)
+     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "Obstacle")
+        Debug.Log("Hit!");
+        //explosion.SetActive(true);
+        if (!explodes)
         {
-            explosion.SetActive(true);
-            restart();
+            explodes = true;
+            explosion = Instantiate(explosion, transform.position, Quaternion.identity);    
         }
+        StartCoroutine(restart());
     }
 
     IEnumerator restart()
     {
-        yield return new WaitForSeconds(3);
+        explodes = false;
+        yield return new WaitForSeconds(1);
         SceneManager.LoadScene("level1");
     }
 
