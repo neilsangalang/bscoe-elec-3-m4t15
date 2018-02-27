@@ -2,13 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityStandardAssets.CrossPlatformInput;
 
 
 
 public class Player : MonoBehaviour
 {
-
+    Rigidbody _rigidbody;
     Vector3 currentPosition, currentRotation;
     [SerializeField] float controlSpeed;
     [SerializeField] float tiltSpeed;
@@ -18,18 +19,22 @@ public class Player : MonoBehaviour
     [SerializeField] float yMaxRange;
     [SerializeField] float yRotation;
     [SerializeField] float xRotation;
+    //[SerializeField] GameObject explosion;
+    GameObject explosion;
     float xThrow, yThrow;
 
 
     // Use this for initialization
     void Start()
     {
-        controlSpeed = 2f;
+        _rigidbody = GetComponent<Rigidbody>();
+        explosion = GameObject.Find("Explosion");
+        controlSpeed = 5f;
         tiltSpeed = 10.0f;
-        xMinRange = -2.43f;
-        xMaxRange = 2.43f;
-        yMinRange = -2.43f;
-        yMaxRange = 2.43f;
+        xMinRange = -4f;
+        xMaxRange = 4f;
+        yMinRange = -3f;
+        yMaxRange = 3f;
         yRotation = 0.0F;
         xRotation = 0.0F;
 }
@@ -114,8 +119,8 @@ public class Player : MonoBehaviour
         xThrow = CrossPlatformInputManager.GetAxis("Horizontal");
         yThrow = CrossPlatformInputManager.GetAxis("Vertical");
 
-        print(xThrow);
-        print(yThrow);
+        //print(xThrow);
+        //print(yThrow);
 
         currentPosition.x += xThrow * controlSpeed * Time.deltaTime;
         currentPosition.y += yThrow * controlSpeed * Time.deltaTime;
@@ -132,5 +137,20 @@ public class Player : MonoBehaviour
             transform.localPosition = currentPosition;
 
     }
-    
+
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.tag == "Obstacle")
+        {
+            explosion.SetActive(true);
+            restart();
+        }
+    }
+
+    IEnumerator restart()
+    {
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene("level1");
+    }
+
 }
