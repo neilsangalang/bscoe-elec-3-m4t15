@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
 {
     Rigidbody _rigidbody;
     Vector3 currentPosition, currentRotation;
+    public GameObject playercamera;
     [SerializeField] float controlSpeed;
     [SerializeField] float tiltSpeed;
     [SerializeField] float xMinRange;
