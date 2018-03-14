@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 114627250386216106}
   m_Layer: 0
   m_Name: Default
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31,7 +31,7 @@ GameObject:
   - component: {fileID: 114131853483904042}
   m_Layer: 0
   m_Name: UAV Trident
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55,14 +55,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 191634}
-  m_LocalRotation: {x: -0.3216699, y: -0.6404898, z: -0.29762268, w: 0.63065207}
-  m_LocalPosition: {x: 116, y: -6.1600037, z: 722.2}
-  m_LocalScale: {x: 1.6029997, y: 1.6029999, z: 1.6029999}
+  m_LocalRotation: {x: 0.07362864, y: -0.87809557, z: -0.4320062, w: -0.19208801}
+  m_LocalPosition: {x: -368.31, y: -15, z: 233.5}
+  m_LocalScale: {x: 1.6030009, y: 1.6029999, z: 1.6030005}
   m_Children:
   - {fileID: 417102}
+  - {fileID: 4933227430696098}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -51.903004, y: -92.545006, z: 3.4060001}
+  m_LocalEulerAnglesHint: {x: -51.903004, y: -206.33699, z: 3.4060001}
 --- !u!23 &2370282
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -115,6 +116,35 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 191634}
   m_IsPrefabParent: 1
+--- !u!1 &1788057234999124
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4933227430696098}
+  - component: {fileID: 108956839173307784}
+  m_Layer: 0
+  m_Name: Spotlight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4933227430696098
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1788057234999124}
+  m_LocalRotation: {x: -0.5728059, y: -0.18477282, z: 0.17128983, w: -0.7800079}
+  m_LocalPosition: {x: -0.3, y: 3.59, z: -1.23}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 499964}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 73.114006, y: -341.531, z: -11.023001}
 --- !u!65 &65472109131326950
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -139,6 +169,42 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.8486032, y: 1.3246403, z: 1.0813849}
   m_Center: {x: -0.024199907, y: 0.06084194, z: -0.04069235}
+--- !u!108 &108956839173307784
+Light:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1788057234999124}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 0
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 10
+  m_Range: 8.442504
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!114 &114131853483904042
 MonoBehaviour:
   m_ObjectHideFlags: 1
