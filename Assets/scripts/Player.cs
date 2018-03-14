@@ -9,7 +9,7 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class Player : MonoBehaviour
 {
-    Rigidbody _rigidbody;
+    AudioSource audioSource = new AudioSource();
     Vector3 currentPosition, currentRotation;
     public GameObject playercamera;
     [SerializeField] float controlSpeed;
@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        _rigidbody = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
         //explosion = GameObject.Find("Explosion");
         controlSpeed = 10f;
         tiltSpeed = 15.0f;
@@ -147,6 +147,7 @@ public class Player : MonoBehaviour
         if (!explodes)
         {
             explodes = true;
+            audioSource.Play();
             explosion = Instantiate(explosion, transform.position, Quaternion.identity);    
         }
         StartCoroutine(restart());
@@ -155,7 +156,7 @@ public class Player : MonoBehaviour
     IEnumerator restart()
     {
         explodes = false;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene("level1");
     }
 
