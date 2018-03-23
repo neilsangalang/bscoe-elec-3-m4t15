@@ -142,15 +142,18 @@ public class Player : MonoBehaviour
 
      void OnTriggerEnter(Collider col)
     {
-        Debug.Log("Hit!");
-        //explosion.SetActive(true);
-        if (!explodes)
+        if (col.gameObject.tag != "Platform")
         {
-            explodes = true;
-            audioSource.Play();
-            explosion = Instantiate(explosion, transform.position, Quaternion.identity);    
+            Debug.Log("Hit!");
+            //explosion.SetActive(true);
+            if (!explodes)
+            {
+                explodes = true;
+                audioSource.Play();
+                explosion = Instantiate(explosion, transform.position, Quaternion.identity);
+            }
+            StartCoroutine(restart());
         }
-        StartCoroutine(restart());
     }
 
     IEnumerator restart()
